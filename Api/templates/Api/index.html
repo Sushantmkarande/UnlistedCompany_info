@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select id="dropDown">
+      {% for i in data %}
+      <option
+        id="{{ i.Name }}"
+        data-domain="{{ i.Domain }}"
+        data-facebook="{{ i.Facebook }}"
+        data-instagram="{{ i.Instagram }}"
+        value="{{ i.Name }}"
+        >{{ i.Name }}</option
+      >
+      {% endfor %}
+    </select>
+    <h2 id="h2_1"></h2>
+    <h2 id="h2_2"></h2>
+    <h2 id="h2_3"></h2>
+    <h2 id="h2_4"></h2>
+  </body>
+
+  <script>
+    var dropDown = document.querySelector("#dropDown");
+    dropDown.onchange = function() {
+      new_dropDown = dropDown.options[dropDown.selectedIndex];
+
+      document.querySelector("#h2_1").innerHTML =
+        "Company name: " + new_dropDown.text;
+      document.querySelector("#h2_2").innerHTML =
+        "Domain: " + new_dropDown.dataset.domain;
+      document.querySelector("#h2_3").innerHTML =
+        "Facebook: " + new_dropDown.dataset.facebook;
+      document.querySelector("#h2_4").innerHTML =
+        "Instagram: " + new_dropDown.dataset.instagram;
+    };
+  </script>
+</html>
